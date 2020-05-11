@@ -9,6 +9,6 @@ class Event < ApplicationRecord
   validates :description, presence: true, length: {minimum: 20, maximum: 1000 }
   validates :price,
             presence: true,
-            numericality: {greater_than: 0, less_than_or_equal_to: 1000}, validate :multiple_of_five
+            numericality: {greater_than: 0, less_than_or_equal_to: 1000}, multiple: true
   validates :location, presence: true
 end
