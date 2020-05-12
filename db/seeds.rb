@@ -18,7 +18,7 @@ Participation.destroy_all
         last_name: Faker::Name.last_name,
         description: Faker::Lorem.sentences(number: 1),
         email: "#{Faker::Name.first_name}@yopmail.com",
-        encrypted_password: 'holamundo'
+        password: 'holamundo'
     )
 end
 puts "20 users have been created"
