@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
          #validates :email,
          #           uniqueness: true,
-         #           format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: 'Veuillez saisir une adresse email au format valide' },
+         #           format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: 'please enter a valid email address' },
          #           presence: true,
          #           length: { maximum: 256 }
          #
