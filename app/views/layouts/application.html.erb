@@ -16,37 +16,69 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+    <style>
+
+      .JumboHeaderImg {
+      background-image: url('https://blogmedia.evbstatic.com/wp-content/uploads/wpmulti/sites/3/2020/04/Step-by-step-guide-to-moving-your-event-online.png');
+      background-size: cover;
+      padding-top: 10%;
+      padding-bottom: 20%;
+      }
+
+      .btn-primary {
+      background-color: #f87060 !important;
+      }
+      .card-deck{
+      padding:60px 30px;
+      }
+
+      </style>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Eventbrite</a>
+      <a class="navbar-brand" href="<%=root_path %>">
+      <img src="https://www.pngkey.com/png/full/395-3953254_eventbrite-logo-black-eventbrite.png" width="70" height="30" alt="" loading="lazy">
+    </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search events">
+        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+      </form>
 
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item active">
-            <a class="nav-link" href="<%=root_path %>"> Home <span class="sr-only">(current)</span></a>
-          </li>
+          <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Organize
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Overview</a>
+          <a class="dropdown-item" href="#">Pricing</a>
+          <a class="dropdown-item" href="#">Blog</a>
+          <a class="dropdown-item" href="#">Resources</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Help
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">How it works</a>
+      </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Organize</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Help</a>
+            <a class="nav-link" href="#">Create Event</a>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search events">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <div class="w-full block lg:flex lg:flex-row lg:flex-1 mt-2 lg:mt-0 text-center lg:text-left lg:justify-end items-center">
+            <% if user_signed_in? %>
+             <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"btn btn-default mb-2 lg:mr-2 lg:mb-0 block" %>
+            <% else %>
+              <%= link_to "Login", new_user_session_path, class:"btn btn-outline-dark mr-sm-2 block" %>
+            <%= link_to "Sign Up", new_user_registration_path, class:"btn btn-outline-dark mr-sm-2 block" %>
+            <%end%>
       </div>
     </nav>
-
-
-
-
-
-
-
   </head>
 
   <body>
