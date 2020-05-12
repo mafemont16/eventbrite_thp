@@ -11,16 +11,14 @@ User.destroy_all
 Event.destroy_all
 Participation.destroy_all
 
-users = []
-events = []
 
-20.times do
+20.times do 
     User.create!(
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
         description: Faker::Lorem.sentences(number: 1),
-        email: Faker::Internet.domain_name(domain: "yopmail"),
-        encrypted_password: Faker::Internet.password(min_length: 8),
+        email: "name@yopmail.com",
+        encrypted_password: 'holamundo'
     )
 end
 puts "20 users have been created"

@@ -11,14 +11,12 @@ class User < ApplicationRecord
     has_many :events, foreign_key: 'admin_id', class_name: 'Event'
 
   validates :email,
-            uniqueness: true,
-            format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: 'Please, type a valid email address' },
             presence: true,
-            length: { maximum: 256 }
+            format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "Please enter a valid address" }
 
   validates :encrypted_password,
             presence: true,
-            length: { maximum: 50 }
+            length: { minimum: 6 }
 
   validates :description,
             presence: true,
