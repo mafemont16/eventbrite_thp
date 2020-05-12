@@ -6,7 +6,7 @@ class Event < ApplicationRecord
   validates :start_date,
             presence: true
 
-  validates :duration_is_multiple_of_5_and_is_positive
+  validate :duration_is_multiple_of_5_and_is_positive
 
   validates :title,
             presence: true,

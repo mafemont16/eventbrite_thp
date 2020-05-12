@@ -10,7 +10,7 @@ class User < ApplicationRecord
     has_many :participations
     has_many :events, foreign_key: 'admin_id', class_name: 'Event'
 
-    validates :email,
+  validates :email,
             uniqueness: true,
             format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: 'Please, type a valid email address' },
             presence: true,
