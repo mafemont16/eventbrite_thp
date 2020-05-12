@@ -12,12 +12,12 @@ Event.destroy_all
 Participation.destroy_all
 
 
-20.times do 
+20.times do
     User.create!(
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
         description: Faker::Lorem.sentences(number: 1),
-        email: "name@yopmail.com",
+        email: "#{Faker::Name.first_name}@yopmail.com",
         encrypted_password: 'holamundo'
     )
 end
