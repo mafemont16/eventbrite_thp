@@ -5,7 +5,7 @@
   <h2 class="display-4 text-center">Connect through</h2>
   <h1 class="lead text-center"> Online Events</h1>
   <div class="container text-center">
-    <a href="<%= root_path%>" class="btn btn-primary text-center"  role="button">Browse Events </a>
+    <a href="<%= root_path%>" class="btn btn-lg btn-primary text-center"  role="button">Browse Events </a>
 </div>
 </div>
 </div>
@@ -13,29 +13,20 @@
 
 <!-- card deck 2--->
 <body>
-  <div class="card-deck">
-      <div class="card pmd-card">
-          <div class="pmd-card-media">
-            <img src="https://images.unsplash.com/photo-1508997449629-303059a039c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" width="1184" height="666" class="img-fluid">
-             </div>
-        	<% Event.all.reverse.each do |gossip| %>
-          <div class="card-body">
+  <div class="row">
+        	<% Event.all.each do |event| %>
+            <div class="col-4 mb-5">
+            <div class="card">
+            <img src="https://blogmedia.evbstatic.com/wp-content/uploads/wpmulti/sites/3/2020/04/Step-by-step-guide-to-moving-your-event-online.png" class="card-img-top img-responsive">
+            <div class="card-body text-center">
 							<h4 class="card-title"> <%= event.title %></h4>
-							<span class="card-text"> <%= event.content %></span>
-              <p class="card-text"><small class="text-muted">
-              <%if event.start_date %>
-               <%= event.start_date.strftime("%d/%m/%Y %H:%M") %>
-              <% end %>
-              </small><p>
-                <p class="card-text"><small class="text-muted"> <%= event.author.first_name %> </small></p>
-          <p class="card-text"><small class="text-muted"> <%= event.price %> </small></p>
-          <p class="card-text"><small class="text-muted"> <%= event.duration %> </small></p>
-          <p class="card-text"><small class="text-muted"> <%= event.location %> </small></p>
-          <p class="card-text"><small class="text-muted"> Nombre de participants => <%= event.users.count %> </small></p>
-          <a href="<%= event_path(event.id) %>" class="btn btn-outline-light btn-block btn-sm my-3 btn-2">event</a>
-              <hr>
-					 </div>
-			  	</div>
-		 </div>
-     <%end%>
+                <hr>
+							<span class="card-text"> <%= event.description %></span>
+              <br>
+                <a href="<%= event_path(event.id) %>" class="btn btn-secondary btn-block btn-sm my-3 btn-2">See the event</a>
+					  </div>
+			   	</div>
+        </div>
+        <%end%>
+		  </div>
 </body>

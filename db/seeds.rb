@@ -28,7 +28,7 @@ puts "10 users have been created"
         start_date: Faker::Date.forward(days: 45),
         duration: 5 * rand(1..100),
         title: Faker::Book.title,
-        description: Faker::Marketing.buzzwords,
+        description: Faker::Lorem.paragraph(sentence_count: 10),
         price: rand(1..999),
         location: Faker::Nation.capital_city,
         author: User.all.sample

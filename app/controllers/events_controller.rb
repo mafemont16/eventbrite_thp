@@ -1,26 +1,26 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def new
     @event = Event.new
   end
 
   def create
-    @event = Event.new(author: current_user, title: params[:event][:title],
-                       start_date: params[:event][:start_date],
-                       duration: params[:event][:duration],
-                       description: params[:event][:description],
-                       price: params[:event][:price],
-                       location: params[:event][:location]
-                       )
-
-      if @event.save
-        flash[:success] = "The event was successfuly created"
-        redirect_to events_path(@event.id)
-      else
-        flash[:error] = "The event could not be created! Please check everything again"
+    @event = Event.new(event_params)
+    puts @event.title
+    if @event.save
+      flash[:success] = "Your event is now created."
+      redirect_to event_path(@event.id)
+    else
+      messages = []
+      if @event.errors.any?
+        @event.errors.full_messages.each do |message|
+          messages << message
+        end
+        flash[:error] = "See the following errors :#{messages.join(" ")}"
         render 'new'
- end
+      end
+    end
   end
 
   def edit
@@ -39,4 +39,12 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
   end
+  
+  
+  private
+
+  def event_params
+    params.require(:events).permit(:title, :location, :duration, :description, :price, :start_date, :admin_id)
+  end
+  
 end

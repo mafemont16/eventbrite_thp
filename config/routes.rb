@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     devise_for :users
     resources :events
     resources :users
+    
     get 'static_pages/index'
     get 'static_pages/secret'
 

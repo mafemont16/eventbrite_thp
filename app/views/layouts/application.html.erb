@@ -19,14 +19,26 @@
     <style>
 
       .JumboHeaderImg {
-      background-image: url('https://blogmedia.evbstatic.com/wp-content/uploads/wpmulti/sites/3/2020/04/Step-by-step-guide-to-moving-your-event-online.png');
+      background-image: url('https://images.unsplash.com/photo-1513530534585-c7b1394c6d51?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80');
       background-size: cover;
 
       }
 
-      .btn-primary {
-      background-color: #f87060 !important;
+      .btn-primary, .btn:focus {
+      background-color: #ef8354 !important;
+      outline: none !important;
       }
+
+      .btn:focus {
+      outline: thin dotted;
+      outline: 5px auto -webkit-focus-ring-color;
+      outline-offset: -2px;
+      }
+
+      .btn-secondary {
+      background-color: #0081a7 !important;
+      }
+
       .card-deck{
       padding:60px 30px;
       }
