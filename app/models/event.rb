@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-    
+
 after_create :participate_event_send
 
 def participate_event_send
@@ -8,26 +8,30 @@ end
 
   has_many :participations
   has_many :users, through: :participations
-  belongs_to :admin, class_name: 'User'
+  belongs_to :author, class_name: 'User'
 
-  validates :start_date,
-            presence: true
+  validates :start_date, presence: true
 
-  validate :duration_is_multiple_of_5_and_is_positive
+  validates :duration, presence: true
 
   validates :title,
-            presence: true,
-            length: {minimum: 5, maximum: 140 }
+             presence: true,
+             length: {minimum: 2, maximum: 140 }
 
   validates :description,
-            presence: true,
-            length: {minimum: 20, maximum: 1000, message: 'Please type a descriptions with more than 2 characters and less than 1000' }
+             presence: true,
+             length: {minimum: 5, maximum: 1000 }
 
   validates :price,
-            presence: true,
-            format: { with: /\A\d+(?:\.\d{0,2})?\z/ },
-            numericality: {greater_than: 0, less_than_or_equal_to: 1000}
+             presence: true,
+             numericality: {greater_than: 0, less_than_or_equal_to: 1000}
 
-  validates :location,
-             presence: true
+  validates :location, presence: true
+
+private
+
+def duration_is_multiple_of_5_and_is_positive
+  duration >= 0 && duration % 5 == 0 ? true : false
+end
+
 end

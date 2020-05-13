@@ -1,25 +1,50 @@
-<h2>Sign up</h2>
+<main class="login-form">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Sign Up</div>
+                    <div class="card-body">
+                        <form action="" method="">
+                          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                           <%= f.error_notification %>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+                           <div class="form-group row">
+                             <label for="email_address" class="col-md-2 col-form-label text-md-right"></label>
+                               <div class="col-md-8">
+                                     <%= f.input :email,
+                                         required: true,
+                                         autofocus: true,
+                                        input_html: { autocomplete: "email" }%>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-  </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+                                <div class="form-group row">
+                                <label for="password" class="col-md-4 col-form-label text-md-right"></label>
+                                <div class="col-md-10">
+                                <%= f.input :password,
+                                             required: true,
+                                             hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                                             input_html: { autocomplete: "new-password" } %>
 
-<%= render "devise/shared/links" %>
+
+                                <div class="form-group row">
+                                <label for="password-confirmation" class="col-md-4 col-form-label text-md-right"></label>
+                                <div class="col-md-10">
+                                <%= f.input :password_confirmation,
+                                             required: true,
+                                             input_html: { autocomplete: "new-password" } %>
+
+                                <div class="form-group row">
+                                <label for="sign-up" class="col-form-label block-center"></label>
+                                <div class="col-md-6">
+                                  <br>
+                                 <%= f.button :submit, "Sign up", class: "btn btn-md btn-success" %>
+                                  </div>
+                                  <% end %>
+                           </div>
+                         </div>
+                       </div>
+                     </div>
+
+                   </div>
+                   <%= render "devise/shared/links" %>

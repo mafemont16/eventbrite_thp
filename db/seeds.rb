@@ -11,14 +11,27 @@ User.destroy_all
 Event.destroy_all
 Participation.destroy_all
 
-
-20.times do
+10.times do
     User.create!(
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
-        description: Faker::Lorem.sentences(number: 1),
+        description: Faker::TvShows::Community.quotes,
         email: "#{Faker::Name.first_name}@yopmail.com",
         password: 'holamundo'
     )
 end
-puts "20 users have been created"
+puts "10 users have been created"
+
+
+10.times do
+    Event.create!(
+        start_date: Faker::Date.forward(days: 45),
+        duration: 5 * rand(1..100),
+        title: Faker::Book.title,
+        description: Faker::Marketing.buzzwords,
+        price: rand(1..999),
+        location: Faker::Nation.capital_city,
+        author: User.all.sample
+    )
+end
+puts "10 events have been created"

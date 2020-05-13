@@ -1,18 +1,31 @@
-<h2>Forgot your password?</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+ <form>
+     <div class="container">
+  	   <div class="row justify-content-center">
+         <div class="col-md-8">
+             <div class="card">
+               <div class="card-header">Forgot Password?</div>
+               <div class="card-body center-block">
+                  <h3 class="text-center">You're in the right place :)</h3>
+                   <p class="text-center">You can reset your password here.</p>
+                   <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+                    <%= f.error_notification %>
+                    <div class="form-group row">
+                      <label class="col-md-3 col-form-label"></label>
+                          <div class="col-md-8">
+                            <%= f.input :email,
+                                        required: true,
+                                        autofocus: true,
+                                        input_html: { autocomplete: "email" } %>
+                            </div>
+                          </div>
+                        <div class="form-group row col-md-3 offset-md-3">
+                        <input class="btn btn-sm btn-success" <%= f.button :submit, "Send me reset password instructions" %>
+                        </input>
+                        </div>
+                      <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+         </form>

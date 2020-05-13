@@ -21,8 +21,7 @@
       .JumboHeaderImg {
       background-image: url('https://blogmedia.evbstatic.com/wp-content/uploads/wpmulti/sites/3/2020/04/Step-by-step-guide-to-moving-your-event-online.png');
       background-size: cover;
-      padding-top: 10%;
-      padding-bottom: 20%;
+
       }
 
       .btn-primary {
@@ -31,8 +30,23 @@
       .card-deck{
       padding:60px 30px;
       }
+      .container {
+        margin-top: 160px;
+      }
 
       </style>
+
+    <% if flash[:success] %>
+    <div class="alert alert-success">
+      <%= flash[:success] %>
+    </div>
+    <% end %>
+
+    <% if flash[:danger] %>
+    <div class="alert alert-danger">
+      <%= flash[:danger] %>
+    </div>
+    <% end %>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="<%=root_path %>">
