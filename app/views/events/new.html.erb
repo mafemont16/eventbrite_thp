@@ -1,2 +1,37 @@
-<h1>Events#new</h1>
-<p>Find me in app/views/events/new.html.erb</p>
+<% if @event.errors.any? %>
+
+<div class="alert alert-danger" role="alert">
+  <p>Sorry, your event cannot be created because of the following reasons: </p>
+    <ul>
+      <% @event.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+
+
+<br></br>
+<h1 class="text-center"> Create your Event here</h1>
+<br></br>
+<div class="row justify-content-center">
+  <div class="col-6">
+
+    <%=form_tag url_for(action: 'create'), method: "post" do %>
+
+      <%= label_tag 'Title', nil, :class =>"" %>
+      <%= text_field_tag 'title', @event.title, :class => "form-control" %>
+      <br>
+      <%= label_tag 'Content', nil, :class =>"" %>
+      <%= text_area_tag 'content', @event.description, :class => "form-control" %>
+      <br>
+      <%= label_tag 'Author', nil, :class =>"" %>
+      <%= select_tag 'user', options_from_collection_for_select(User.all, :id, :first_name), :class => "form-control", prompt: 'choose the user' %>
+      <br>
+      <div class="row justify-content-center">
+      <%= submit_tag "Create event", :class => "btn btn-secondary btn-lg" %>
+      </div>
+      <% end %>
+  </div>
+</div>

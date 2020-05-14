@@ -11,29 +11,25 @@ class User < ApplicationRecord
          #validates :email,
          #           uniqueness: true,
          #           presence: true,
-         #           length: { maximum: 256 }
          #
          # validates :encrypted_password,
          #           presence: true
          #
          # validates :description,
          #           presence: true,
-         #           length: { in: 10..500 }
          #
          # validates :first_name,
          #           presence: true,
-         #           length: { in: 2..30 }
          #
          # validates :last_name,
          #           presence: true,
-         #           length: { in: 2..30 }
 
 
             has_many :events, through: :participations
             has_many :participations
             has_many :events, foreign_key: 'author_id', class_name: 'Event'
 
-            #def welcome_send
-              #UserMailer.welcome_email(self).deliver_now
-            #end
+            def welcome_send
+              UserMailer.welcome_email(self).deliver_now
+            end
 end

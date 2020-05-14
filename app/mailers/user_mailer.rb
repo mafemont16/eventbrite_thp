@@ -1,4 +1,4 @@
-=begin
+
 class UserMailer < ApplicationMailer
 
   default from: 'thp@yopmail.com'

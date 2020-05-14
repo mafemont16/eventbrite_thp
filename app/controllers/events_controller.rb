@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  #before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def new
     @event = Event.new
@@ -39,12 +39,12 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
   end
-  
-  
+
+
   private
 
   def event_params
     params.require(:events).permit(:title, :location, :duration, :description, :price, :start_date, :admin_id)
   end
-  
+
 end
