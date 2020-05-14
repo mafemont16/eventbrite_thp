@@ -1,10 +1,10 @@
 class Event < ApplicationRecord
 
-after_create :participate_event_send
+#after_create :participate_event_send
 
-def participate_event_send
-  UserMailer.participate_event_email(self).deliver_now
-end
+#def participate_event_send
+  #UserMailer.participate_event_email(self).deliver_now
+#end
 
   has_many :participations
   has_many :users, through: :participations

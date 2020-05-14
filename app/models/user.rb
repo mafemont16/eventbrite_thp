@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-  after_create :welcome_send
+  #after_create :welcome_send
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -10,7 +10,6 @@ class User < ApplicationRecord
 
          #validates :email,
          #           uniqueness: true,
-         #           format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: 'please enter a valid email address' },
          #           presence: true,
          #           length: { maximum: 256 }
          #
@@ -34,7 +33,7 @@ class User < ApplicationRecord
             has_many :participations
             has_many :events, foreign_key: 'author_id', class_name: 'Event'
 
-            def welcome_send
-              UserMailer.welcome_email(self).deliver_now
-            end
+            #def welcome_send
+              #UserMailer.welcome_email(self).deliver_now
+            #end
 end
