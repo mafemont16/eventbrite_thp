@@ -41,9 +41,7 @@
       .card-deck{
       padding:60px 30px;
       }
-      .container {
-        margin-top: 160px;
-      }
+      
 
       </style>
 
@@ -53,9 +51,9 @@
     </div>
     <% end %>
 
-    <% if flash[:danger] %>
+    <% if flash[:error] %>
     <div class="alert alert-danger">
-      <%= flash[:danger] %>
+      <%= flash[:error] %>
     </div>
     <% end %>
 

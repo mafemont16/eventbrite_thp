@@ -7,31 +7,32 @@ def participate_event_send
 end
 
   has_many :participations
-  has_many :users, through: :participations
-  belongs_to :author, class_name: 'User'
+  has_many :guests, class_name: 'User', through: :participations
+  belongs_to :admin, class_name: 'User'
 
   validates :start_date, presence: true
+  validate :start_date_must_be_future
 
   validates :duration, presence: true
 
   validates :title,
              presence: true,
-             length: {minimum: 2, maximum: 140 }
+             length: { in: 2..140 }
 
   validates :description,
              presence: true,
-             length: {minimum: 5, maximum: 1000 }
+             length: {in: 10..1000 }
 
   validates :price,
              presence: true,
-             numericality: {greater_than: 0, less_than_or_equal_to: 1000}
+             inclusion: { in: 1..1000}
 
   validates :location, presence: true
 
-private
 
-def duration_is_multiple_of_5_and_is_positive
-  duration >= 0 && duration % 5 == 0 ? true : false
+def start_date_must_be_future
+  return unless start_date
+  errors.add(:start_date, "is not correct") unless start_date > Time.now
 end
 
 end

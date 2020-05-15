@@ -11,7 +11,7 @@ User.destroy_all
 Event.destroy_all
 Participation.destroy_all
 
-10.times do
+2.times do
     User.create!(
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
@@ -20,10 +20,10 @@ Participation.destroy_all
         password: 'holamundo'
     )
 end
-puts "10 users have been created"
+puts "2 users have been created"
 
 
-10.times do
+2.times do
     Event.create!(
         start_date: Faker::Date.forward(days: 45),
         duration: 5 * rand(1..100),
@@ -31,7 +31,18 @@ puts "10 users have been created"
         description: Faker::Lorem.paragraph(sentence_count: 10),
         price: rand(1..999),
         location: Faker::Nation.capital_city,
-        author: User.all.sample
+        admin: User.all.sample
     )
 end
-puts "10 events have been created"
+puts "2 events have been created"
+
+
+1.times do
+  @participation = Participation.create(
+    stripe_customer_id: "hola",
+    guest: User.all.sample,
+    event: Event.all.sample
+  )
+end
+
+puts "Participations are now created"

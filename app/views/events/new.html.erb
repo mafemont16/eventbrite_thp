@@ -1,14 +1,14 @@
 <% if @event.errors.any? %>
+      <div class="alert alert-danger" role="alert">
+        <p>Your event cannot be created for the following reasons:</p>
+        <ul>
+          <% @event.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-<div class="alert alert-danger" role="alert">
-  <p>Sorry, your event cannot be created because of the following reasons: </p>
-    <ul>
-      <% @event.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-  <% end %>
 
 
 
@@ -18,20 +18,29 @@
 <div class="row justify-content-center">
   <div class="col-6">
 
-    <%=form_tag url_for(action: 'create'), method: "post" do %>
+    <%= form_for :events,  url:events_path, action: 'create', method: :post  do |f|%>
 
       <%= label_tag 'Title', nil, :class =>"" %>
       <%= text_field_tag 'title', @event.title, :class => "form-control" %>
       <br>
-      <%= label_tag 'Content', nil, :class =>"" %>
-      <%= text_area_tag 'content', @event.description, :class => "form-control" %>
+      <%= label_tag 'Description', nil, :class =>"" %>
+      <%= text_area_tag 'description', @event.description, :class => "form-control", size: "50"%>
       <br>
-      <%= label_tag 'Author', nil, :class =>"" %>
-      <%= select_tag 'user', options_from_collection_for_select(User.all, :id, :first_name), :class => "form-control", prompt: 'choose the user' %>
+      <%= label_tag 'City', nil, :class =>"" %>
+      <%= text_field_tag 'description', @event.location, :class => "form-control" %>
+      <br>
+      <%= label_tag 'Start Date', nil, :class =>"" %>
+      <%=f.text_field :start_date, class: "form-control", placeholder: "Start date", type:"datetime-local", size: "50"%>
+      <br>
+      <%= label_tag 'Duration', nil, :class =>"" %>
+      <%= text_field_tag 'duration', @event.duration, :class => "form-control", size: "50" %>
+      <br>
+      <%= label_tag 'Price', nil, :class =>"" %>
+      <%=f.text_field :price, class: "form-control", size: "50"%>
       <br>
       <div class="row justify-content-center">
       <%= submit_tag "Create event", :class => "btn btn-secondary btn-lg" %>
       </div>
-      <% end %>
   </div>
+  <% end %>
 </div>

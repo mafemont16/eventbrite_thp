@@ -8,15 +8,16 @@
         <p class="card-text"><%= @event.description  %></p>
             <small class="text-muted">Start Date <% if @event.start_date %>
                   <%= @event.start_date.strftime("%d/%m/%Y")%> <% end %></small><p>
-                  <p class="card-text">Author: <%= @event.author.first_name %></p>
+                  <p class="card-text">Author: <%= @event.admin.email %></p>
+                  <p class="card-text">Created by <%= @event.admin.first_name %></p>
                   <p class="card-text">Price:  $ <%= @event.price %></p>
                   <p class="card-text">Duration: <%= @event.duration  %> days </p>
                   <p class="card-text">Location: <%= @event.location %></p>
         <div class="row justify-content-center">
             <div class="col-sm-6">
-              <a href="<%= edit_event_path%>" class="btn btn-sm btn-info float-right">Edit</a>
+              <a href="<%= edit_event_path%>" class="btn btn-md btn-info float-right"> Edit event</a>
               <div class="row-12 text-center">
-              <a href="<%= event_path%>" class="btn  btn-sm btn-danger float-left" data-confirm="Are you sure you want to delete this gossip?"
+              <a href="<%= event_path%>" class="btn  btn-md btn-danger float-left" data-confirm="Are you sure you want to delete this gossip?"
               data-method="DELETE">Delete</a>
 
                 </div>

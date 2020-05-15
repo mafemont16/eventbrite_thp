@@ -22,6 +22,6 @@ class UserMailer < ApplicationMailer
     @url  = 'http://cryptic-tor-59919.herokuapp.com'
 
     # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-    mail(to: @event.author.email, subject: 'Welcome to the event')
+    mail(to: @event.admin.email, subject: 'Welcome to the event')
   end
 end
