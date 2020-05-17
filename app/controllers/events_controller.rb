@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  #before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def new
     @event = Event.new
@@ -8,12 +8,12 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     if @event.save
-      flash[:success] = "Your event has been created."
-      render 'show'
-    else
+        redirect_to root_path
+      else
         render 'new'
-      end
   end
+ end
+
 
   def edit
     @event = Event.find(params[:id])
@@ -30,13 +30,13 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
-  end
+        @event = Event.find(params[:id])
+      end
 
-  private
+private
 
-  def event_params
-    params.permit(:title, :location, :duration, :description, :price, :start_date, :admin_id)
- end
+def event_params
+  params.require(:event).permit(:title, :description, :location, :price, :duration, :start_date)
+end
 
 end

@@ -10,37 +10,35 @@
     <% end %>
 
 
-
-
 <br></br>
 <h1 class="text-center"> Create your Event here</h1>
 <br></br>
 <div class="row justify-content-center">
   <div class="col-6">
 
-    <%= form_for :events,  url:events_path, action: 'create', method: :post  do |f|%>
+    <%= form_for @event do |f|%>
 
       <%= label_tag 'Title', nil, :class =>"" %>
-      <%= text_field_tag 'title', @event.title, :class => "form-control" %>
+      <%=f.text_field :title, class: "form-control", required: true %>
       <br>
       <%= label_tag 'Description', nil, :class =>"" %>
-      <%= text_area_tag 'description', @event.description, :class => "form-control", size: "50"%>
+      <%=f.text_area :description, class:"form-control", required: true%>
       <br>
-      <%= label_tag 'City', nil, :class =>"" %>
-      <%= text_field_tag 'description', @event.location, :class => "form-control" %>
+      <%= label_tag 'Location', nil, :class =>"" %>
+      <%=f.text_field :location, class: "form-control", required: true%>
       <br>
       <%= label_tag 'Start Date', nil, :class =>"" %>
-      <%=f.text_field :start_date, class: "form-control", placeholder: "Start date", type:"datetime-local", size: "50"%>
+      <%=f.date_field :start_date, class: "form-control", required: true%>
       <br>
       <%= label_tag 'Duration', nil, :class =>"" %>
-      <%= text_field_tag 'duration', @event.duration, :class => "form-control", size: "50" %>
+      <%=f.number_field :duration, class: "form-control", required: true%>
       <br>
       <%= label_tag 'Price', nil, :class =>"" %>
-      <%=f.text_field :price, class: "form-control", size: "50"%>
+      <%=f.number_field :price, class: "form-control", required: true %>
       <br>
       <div class="row justify-content-center">
       <%= submit_tag "Create event", :class => "btn btn-secondary btn-lg" %>
       </div>
-  </div>
   <% end %>
+</div>
 </div>

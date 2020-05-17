@@ -29,7 +29,7 @@ puts "2 users have been created"
         duration: 5 * rand(1..100),
         title: Faker::Book.title,
         description: Faker::Lorem.paragraph(sentence_count: 10),
-        price: rand(1..999),
+        price: [0, 5, 8, 10, 12, 15, 20, 50].sample,
         location: Faker::Nation.capital_city,
         admin: User.all.sample
     )
@@ -40,7 +40,7 @@ puts "2 events have been created"
 1.times do
   @participation = Participation.create(
     stripe_customer_id: "hola",
-    guest: User.all.sample,
+    user: User.all.sample,
     event: Event.all.sample
   )
 end
